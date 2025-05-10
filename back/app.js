@@ -15,7 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 5010;
 
 app.use(cors({
-  origin: 'http://localhost:3000', // ou process.env.FRONTEND_URL si tu le préfères
+  origin: 'https://admins-platform-pfe.vercel.app/', // ou process.env.FRONTEND_URL si tu le préfères
   credentials: true
 }));
 

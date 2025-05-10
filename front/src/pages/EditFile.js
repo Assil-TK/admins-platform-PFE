@@ -8,6 +8,7 @@ import PreviewBox from '../components/PreviewBox';
 import CommitInput from '../components/CommitInput';
 import AIPromptBox from '../components/AIPromptBox';
 
+
 const EditFile = () => {
   const { state } = useLocation();
   const { selectedRepo, selectedFile } = state || {};
@@ -56,7 +57,7 @@ const EditFile = () => {
       const branch = 'main';
       const username = user?.username || user?.login;
 
-      await axios.post('http://localhost:5010/api/write-file-content', {
+      await axios.post(`${process.env.REACT_APP_API_URL}/write-file-content`, {
         content,
         repoUrl,
         branch,
@@ -105,7 +106,7 @@ const EditFile = () => {
       const files = await fetchComponentFiles();
       console.log('Sending these component files to the backend:', files);
   
-      await axios.post('http://localhost:5010/api/save-imported-components', { files });
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/save-imported-components`, { files });
     } catch (err) {
       console.error('Failed to send components to backend:', err.response?.data || err.message);
     }

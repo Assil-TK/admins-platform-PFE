@@ -1,14 +1,14 @@
-// src/pages/AuthCallback.js
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const AuthCallback = () => {
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL 
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch('http://localhost:5010/auth/github/callback' + window.location.search, {
+        const response = await fetch(`${API_URL}/auth/github/callback${window.location.search}`, {
           credentials: 'include'
         });
 
@@ -26,7 +26,7 @@ const AuthCallback = () => {
     };
 
     fetchUser();
-  }, [navigate]);
+  }, [navigate, API_URL]);
 
   return <div>Authenticating with GitHub...</div>;
 };

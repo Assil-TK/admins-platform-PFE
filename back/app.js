@@ -14,8 +14,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5010;
 
-app.use(cors({
-  origin: 'https://admins-platform-pfe.vercel.app/', // ou process.env.FRONTEND_URL si tu le préfères
+app.use(cors({ 
+  origin: process.env.FRONTEND_URL, 
   credentials: true
 }));
 
